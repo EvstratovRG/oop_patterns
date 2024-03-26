@@ -6,8 +6,8 @@ class Flyweight():
     """
     Легковес хранит общую часть состояния (также называемую внутренним
     состоянием), которая принадлежит нескольким реальным бизнес-объектам.
-    Легковес принимает оставшуюся часть состояния (внешнее состояние, уникальное
-    для каждого объекта) через его параметры метода.
+    Легковес принимает оставшуюся часть состояния (внешнее состояние,
+    уникальное для каждого объекта) через его параметры метода.
     """
 
     def __init__(self, shared_state: str) -> None:
@@ -16,7 +16,10 @@ class Flyweight():
     def operation(self, unique_state: str) -> None:
         s = json.dumps(self._shared_state)
         u = json.dumps(unique_state)
-        print(f"Flyweight: Displaying shared ({s}) and unique ({u}) state.", end="")
+        print(
+            f"Flyweight: Displaying shared ({s}) and unique ({u}) state.",
+            end=""
+        )
 
 
 class FlyweightFactory():
@@ -49,7 +52,8 @@ class FlyweightFactory():
         key = self.get_key(shared_state)
 
         if not self._flyweights.get(key):
-            print("FlyweightFactory: Can't find a flyweight, creating new one.")
+            print("FlyweightFactory: \
+                  Can't find a flyweight, creating new one.")
             self._flyweights[key] = Flyweight(shared_state)
         else:
             print("FlyweightFactory: Reusing existing flyweight.")
@@ -68,8 +72,8 @@ def add_car_to_police_database(
 ) -> None:
     print("\n\nClient: Adding a car to database.")
     flyweight = factory.get_flyweight([brand, model, color])
-    # Клиентский код либо сохраняет, либо вычисляет внешнее состояние и передает
-    # его методам легковеса.
+    # Клиентский код либо сохраняет, либо вычисляет внешнее состояние
+    # и передает его методам легковеса.
     flyweight.operation([plates, owner])
 
 

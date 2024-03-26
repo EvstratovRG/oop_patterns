@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 from abc import ABC, abstractmethod
 from typing import List
 
@@ -49,9 +50,9 @@ class Component(ABC):
     @abstractmethod
     def operation(self) -> str:
         """
-        Базовый Компонент может сам реализовать некоторое поведение по умолчанию
-        или поручить это конкретным классам, объявив метод, содержащий поведение
-        абстрактным.
+        Базовый Компонент может сам реализовать некоторое поведение по
+        умолчанию или поручить это конкретным классам, объявив метод,
+        содержащий поведение абстрактным.
         """
 
         pass
@@ -120,9 +121,9 @@ def client_code(component: Component) -> None:
 
 def client_code2(component1: Component, component2: Component) -> None:
     """
-    Благодаря тому, что операции управления потомками объявлены в базовом классе
-    Компонента, клиентский код может работать как с простыми, так и со сложными
-    компонентами, вне зависимости от их конкретных классов.
+    Благодаря тому, что операции управления потомками объявлены в базовом
+    классе Компонента, клиентский код может работать как с простыми,
+    так и со сложными компонентами, вне зависимости от их конкретных классов.
     """
 
     if component1.is_composite():
@@ -156,5 +157,6 @@ if __name__ == "__main__":
     client_code(tree)
     print("\n")
 
-    print("Client: I don't need to check the components classes even when managing the tree:")
+    print("Client: I don't need to check the components \
+          classes even when managing the tree:")
     client_code2(tree, simple)

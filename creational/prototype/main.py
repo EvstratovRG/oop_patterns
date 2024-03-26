@@ -24,9 +24,9 @@ class SomeComponent:
 
     def __copy__(self):
         """
-        Create a shallow copy. This method will be called whenever someone calls
-        `copy.copy` with this object and the returned value is returned as the
-        new shallow copy.
+        Create a shallow copy. This method will be called whenever someone
+        calls `copy.copy` with this object and the returned value is
+        returned as the new shallow copy.
         """
 
         # First, let's create copies of the nested objects.
@@ -80,8 +80,8 @@ if __name__ == "__main__":
 
     shallow_copied_component = copy.copy(component)
 
-    # Let's change the list in shallow_copied_component and see if it changes in
-    # component.
+    # Let's change the list in shallow_copied_component and see if it changes
+    # in component.
     shallow_copied_component.some_list_of_objects.append("another object")
     if component.some_list_of_objects[-1] == "another object":
         print(
@@ -149,8 +149,8 @@ if __name__ == "__main__":
         f"{id(deep_copied_component.some_circular_ref.parent)}"
     )
     print(
-        f"id(deep_copied_component.some_circular_ref.parent.some_circular_ref.parent): "
-        f"{id(deep_copied_component.some_circular_ref.parent.some_circular_ref.parent)}"
+        f"id(deep_copied_component.some_circular_ref.parent.some_circular_ref.parent): "  # noqa
+        f"{id(deep_copied_component.some_circular_ref.parent.some_circular_ref.parent)}"  # noqa
     )
     print(
         "^^ This shows that deepcopied objects contain same reference, they "

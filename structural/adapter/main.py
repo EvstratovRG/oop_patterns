@@ -50,4 +50,3 @@ if __name__ == "__main__":
     print("Client: But I can work with it via the Adapter:")
     adapter = Adapter()
     client_code(adapter)
-    
